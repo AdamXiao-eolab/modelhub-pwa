@@ -2,10 +2,10 @@
 /* Desktop: top-right corner, visible and accessible */
 /* Mobile: bottom-center floating bar, always in view */
 
-/* Floating button */
+/* Floating button — desktop: bottom-right (classic position) */
 .aicb {
   position: fixed;
-  top: 12px;
+  bottom: 24px;
   right: 24px;
   z-index: 999;
 }
@@ -51,10 +51,10 @@
   50% { box-shadow: 0 0 0 6px rgba(52,211,153,0); }
 }
 
-/* Chat dialog — desktop: drops from top-right */
+/* Chat dialog — desktop: rises from bottom-right */
 .aicd {
   position: fixed;
-  top: 62px;
+  bottom: 76px;
   right: 24px;
   width: 380px;
   height: 520px;
@@ -207,7 +207,6 @@
 @media (max-width: 768px) {
   /* Button: bottom-center, floating above everything */
   .aicb {
-    top: auto;
     bottom: 20px;
     right: auto;
     left: 50%;
@@ -224,7 +223,7 @@
   /* Remove pulse dot on mobile (simpler) */
   .aicb .aibt::after { display: none; }
 
-  /* Chat dialog: full-screen bottom sheet */
+  /* Chat dialog: full-width bottom sheet */
   .aicd {
     top: auto;
     right: 0;
