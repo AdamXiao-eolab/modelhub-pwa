@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ModelHub">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Crect width='192' height='192' rx='36' fill='%237c3aed'/%3E%3Ctext x='96' y='128' font-size='96' font-weight='800' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard —ModelHub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#05050a;color:#fff;-webkit-font-smoothing:antialiased}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+a{color:#a78bfa;text-decoration:none}
+nav{padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06);position:fixed;top:0;left:0;right:0;background:rgba(5,5,10,0.85);backdrop-filter:blur(16px);z-index:100}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:22px;letter-spacing:-0.5px;color:#a78bfa}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.6);font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.active{color:#a78bfa}
+.ob{background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(52,211,153,0.08));border:1px solid rgba(167,139,250,0.15);border-radius:10px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;font-size:14px}
+.ob .l{color:#a78bfa;font-weight:600;white-space:nowrap}
+.ob .d{color:rgba(255,255,255,0.5)}
+.ob .ci{font-family:'SF Mono',monospace;font-size:13px;color:#34d399;background:rgba(255,255,255,0.04);padding:2px 8px;border-radius:4px}
+.spacer{height:80px}
+.ph{padding:40px 0 30px}
+.ph h1{font-size:28px;font-weight:800;letter-spacing:-0.5px}
+.card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:24px;margin-bottom:20px}
+.card h2{font-size:14px;font-weight:600;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.cg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px}
+.sb{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px}
+.sb .lbl{font-size:12px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.sb .val{font-size:28px;font-weight:700;color:#fff}
+.sb .val.g{color:#34d399}
+.sb .val.p{color:#a78bfa}
+.sb .val.b{color:#60a5fa}
+.sb .sub{font-size:12px;color:rgba(255,255,255,0.3);margin-top:4px}
+/* Onboarding bar */
+.ob-bar{background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(52,211,153,0.06));border:1px solid rgba(167,139,250,0.2);border-radius:14px;padding:20px 24px;margin-bottom:24px;position:relative}
+.obc{width:100%}
+.obh{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.obl{font-size:15px;font-weight:700;color:#a78bfa}
+.obd{background:none;border:none;color:rgba(255,255,255,0.3);font-size:16px;cursor:pointer;padding:4px;transition:0.2s}
+.obd:hover{color:#fff}
+.obs{display:flex;gap:8px}
+.osi{display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;flex:1;cursor:pointer;transition:all 0.2s}
+.osi:hover{background:rgba(124,58,237,0.08);border-color:rgba(167,139,250,0.3)}
+.osi.od{opacity:0.5;cursor:default}
+.osi.od:hover{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.06)}
+.oc{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.ocd{background:#7c3aed;color:#fff;font-size:12px}
+.oi{flex:1;min-width:0}
+.ot{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:2px}
+.odc{font-size:11px;color:rgba(255,255,255,0.35)}
+.qs{background:linear-gradient(135deg,rgba(124,58,237,0.04),rgba(52,211,153,0.04));border:1px solid rgba(167,139,250,0.12);border-radius:14px;padding:28px;margin-bottom:24px}
+.qs h2{font-size:18px;font-weight:700;margin-bottom:4px;text-transform:none;letter-spacing:normal;color:#fff}
+.qs .st{font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:20px}
+.qr{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.qr:last-child{border-bottom:none}
+.ql{font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);min-width:100px;flex-shrink:0}
+.qv{font-family:'SF Mono',monospace;font-size:13px;color:#a78bfa;word-break:break-all;flex:1;background:rgba(255,255,255,0.03);padding:6px 12px;border-radius:6px}
+.qc{background:none;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;flex-shrink:0;transition:0.2s}
+.qc:hover{border-color:rgba(255,255,255,0.2);color:#fff}
+.tc{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px;margin-top:16px}
+.tb{display:inline-flex;align-items:center;gap:8px;background:#7c3aed;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:0.2s;margin-top:12px}
+.to{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px;margin-top:12px;font-family:'SF Mono',monospace;font-size:13px;line-height:1.7;min-height:60px;white-space:pre-wrap;display:none}
+.kr{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:12px}
+.kr .kn{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.kr .kv{font-family:'SF Mono',monospace;font-size:13px;color:rgba(255,255,255,0.4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kr .ks{font-size:11px;padding:3px 10px;border-radius:100px}
+.kr .ks.a{background:rgba(52,211,153,0.1);color:#34d399}
+.kr .ks.r{background:rgba(239,68,68,0.1);color:#ef4444}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:0.2s}
+.btn-p{background:#7c3aed;color:#fff}
+.btn-s{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.1)}
+.btn-sm{padding:6px 14px;font-size:12px}
+.btn-f{width:100%;justify-content:center}
+.inp{width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#fff;font-size:14px;outline:none;transition:0.2s}
+.inp:focus{border-color:#7c3aed}
+.mo{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
+.m{background:#0d0d14;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px;max-width:480px;width:90%}
+.m h2{font-size:20px;font-weight:700;margin-bottom:8px}
+.krv{background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.15);border-radius:10px;padding:16px;margin:16px 0}
+.krv .nk{font-family:'SF Mono',monospace;font-size:14px;color:#34d399;word-break:break-all}
+.em{text-align:center;padding:40px 20px}
+.em h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.tt{position:fixed;bottom:24px;right:24px;background:#0d0d14;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 20px;font-size:14px;z-index:300;display:none;animation:fadeIn 0.3s}
+.pt{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;text-transform:capitalize}
+.pt.f{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5)}
+.pt.bk{background:rgba(96,165,250,0.1);color:#60a5fa}
+.pt.l{background:rgba(167,139,250,0.1);color:#a78bfa}
+#dc{display:none}
+@media(max-width:768px){.container{padding:0 16px}.cg{grid-template-columns:1fr}.kr{flex-direction:column;align-items:flex-start}.qr{flex-direction:column;align-items:flex-start}.obs{flex-direction:column;gap:6px}.osi{padding:8px 12px}.nav-links a{display:none}.nav-links a.active{display:inline-flex;font-size:12px}.ph h1{font-size:22px}.qs{padding:20px}.card{padding:18px}.sb .val{font-size:24px}}
+footer{padding:32px 0;border-top:1px solid rgba(255,255,255,0.06);text-align:center;margin-top:60px;font-size:13px;color:rgba(255,255,255,0.25)}
+<link rel="stylesheet" href="ai-assistant.css?v=3">
+  </style>
+</head>
+<body>
+<nav><div class="container"><div class="logo"><a href="/">ModelHub</a></div><div class="nav-links"><a href="/">Home</a><a href="pricing.html">Pricing</a><a href="docs.html">Docs</a><a href="privacy.html">Privacy</a><a class="active" href="dashboard.html">Dashboard</a></div></div></nav>
+<div class="spacer"></div>
+<div class="container">
+<div class="ob"><span class="l">&#9889; Already using OpenAI?</span> <span class="d">Just change <span class="ci">base_url</span> to <span class="ci">https://modelhub-api.com/v1</span> and your <span class="ci">api_key</span>. Everything else works the same.</span></div>
+<div id="ac"><div class="ph"><h1>Welcome to ModelHub</h1></div>
+<div style="max-width:400px;margin:40px auto">
+<div class="card" id="sf"><h2 style="font-size:22px;font-weight:700;margin-bottom:6px">Get Started Free</h2><p style="color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:24px">Enter your email and get <b>$5 free credits</b>锛宯o credit card needed. Test it immediately.</p><input type="email" id="se" class="inp" placeholder="you@example.com" autocomplete="email" style="margin-bottom:16px"><button class="btn btn-p btn-f" onclick="signup()">Get Your Free API Key →/button><div style="text-align:center;margin-top:16px;font-size:14px;color:rgba(255,255,255,0.4)">Already have an API key? <a onclick="showLogin()" style="color:#a78bfa;cursor:pointer">Log In</a></div></div>
+<div class="card" id="lf" style="display:none"><h2 style="font-size:22px;font-weight:700;margin-bottom:6px">Log In</h2><p style="color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:24px">Use your email and API key to access your dashboard.</p><input type="email" id="le" class="inp" placeholder="you@example.com" autocomplete="email" style="margin-bottom:12px"><input type="password" id="lk" class="inp" placeholder="mh-sk-..." style="margin-bottom:16px"><button class="btn btn-p btn-f" onclick="login()">Log In &rarr;</button><div style="text-align:center;margin-top:16px;font-size:14px;color:rgba(255,255,255,0.4)">Don't have an API key? <a onclick="showSignup()" style="color:#a78bfa;cursor:pointer">Sign up</a></div></div>
+<div class="card" id="ss" style="display:none"><h2 style="font-size:22px;font-weight:700;margin-bottom:6px">&#127881; Your API Key is Ready!</h2><p style="color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:8px"><b>$5 free credits</b> added. Try it right now:</p><div class="krv"><div style="display:flex;align-items:center;gap:10px"><div class="nk" id="nk" style="flex:1;font-family:monospace;font-size:14px;color:#34d399;word-break:break-all"></div><button class="btn btn-p btn-sm" onclick="copyKey()" id="ckb" style="white-space:nowrap;flex-shrink:0;padding:8px 16px">&#128203; Copy</button></div><div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:10px">&#9888;&#65039; Copy this now. For security, we won&rsquo;t show it again.</div></div><div class="tc"><div style="font-size:12px;color:rgba(255,255,255,0.25);margin-bottom:8px">&#128161; Test it right here —click the button below:</div><button class="tb" id="rtb" onclick="runTestFromRegister()">&#128640; Send Test Request</button><div class="to" id="rto"></div></div><button class="btn btn-s btn-f" style="margin-top:16px;width:100%" onclick="goToDashboard()">Go to Dashboard →/button></div></div></div>
+<div id="dc"><div class="ph" style="display:flex;justify-content:space-between;align-items:center"><h1>Dashboard</h1><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.5)"><span id="ue" style="color:rgba(255,255,255,0.7)"></span><span class="pt f" id="up">free</span><button class="btn btn-sm btn-s" onclick="logout()">閫€鍑篖og In</button></div></div>
+<!-- Onboarding Bar -->
+<div id="ob-bar" class="ob-bar"></div>
+<div class="qs"><h2>&#9889; Quick Start</h2><p class="st">Everything you need to start making API calls in 10 seconds.</p>
+<div class="qr"><span class="ql">Your API Key</span><span class="qv" id="qak">mh-sk-...loading</span><button class="qc" onclick="copyQuickstart()">&#128203; Copy</button></div>
+<div class="qr"><span class="ql">Base URL</span><span class="qv">https://modelhub-api.com/v1</span><button class="qc" onclick="copyText('https://modelhub-api.com/v1')">&#128203; Copy</button></div>
+<div class="qr" style="border-bottom:none"><span class="ql">Test Command</span><span class="qv" id="qc" style="font-size:11px;color:rgba(255,255,255,0.35)">curl https://modelhub-api.com/v1/...</span><button class="qc" onclick="copyCurlCommand()">&#128203; Copy</button></div>
+<div class="tc"><div style="font-size:12px;color:rgba(255,255,255,0.25);margin-bottom:8px">Or just click to test:</div><button class="tb" id="dtb" onclick="runTestFromDashboard()">&#128640; Send Test Request</button><div class="to" id="dto"></div></div></div>
+<div class="cg"><div class="sb"><div class="lbl">Balance</div><div class="val g" id="sb">$5.00</div><div class="sub">Credit balance</div></div><div class="sb"><div class="lbl">Tokens Used</div><div class="val p" id="st">0</div><div class="sub">This month</div></div><div class="sb"><div class="lbl">Requests</div><div class="val b" id="sr">0</div><div class="sub">Total API calls</div></div></div>
+<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h2 style="margin-bottom:0">API Keys</h2><button class="btn btn-sm btn-p" onclick="showCreateKeyModal()">+ + New Key</button></div><div id="kl"><div class="em"><h3>No API Keys</h3><p style="color:rgba(255,255,255,0.4);font-size:14px">Create浣犵殑绗竴涓?API Keys锛屽紑濮嬭皟鐢ㄨ姹傘€?/p></div></div></div>
+<div class="card"><h2>Quick Links</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><a href="docs.html" class="btn btn-s" style="justify-content:center;text-decoration:none">&#128214; View Full Docs</a><a href="pricing.html" class="btn btn-s" style="justify-content:center;text-decoration:none">&#128142; Upgrade Plan</a></div></div></div></div>
+<footer><div class="container">&copy; 2026 ModelHub.</div></footer>
+<div class="mo" id="ckm"><div class="m"><h2>鏂板缓 API Keys</h2><p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px">Give your key a name so you can remember what it's for.</p><input type="text" id="nkn" class="inp" placeholder="e.g. Production, Testing, My App"><div style="display:flex;gap:10px;margin-top:20px"><button class="btn btn-s" onclick="closeCreateKeyModal()" style="flex:1">Cancel</button><button class="btn btn-p" onclick="createKey()" style="flex:1">Create →/button></div></div></div>
+<div class="mo" id="krm"><div class="m"><h2>&#127881; 瀵嗛挜宸睠reate</h2><p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px">Copy this key now. You won&rsquo;t be able to see it again.</p><div class="krv"><div style="display:flex;align-items:center;gap:10px"><div class="nk" id="krv" style="flex:1;font-family:monospace;font-size:14px;color:#34d399;word-break:break-all"></div><button class="btn btn-p btn-sm" onclick="copyNewKey()" id="cnkb" style="white-space:nowrap;flex-shrink:0;padding:8px 16px">&#128203; Copy</button></div><div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:10px">&#9888;&#65039; Copy this now. It will not be shown again.</div></div><button class="btn btn-s btn-f" style="margin-top:16px;width:100%" onclick="closeKeyResultModal()">Done</button></div></div>
+<div class="tt" id="tt"></div>
+<script src="ai-assistant.js?v=3"></script>
+<script src="dashboard.js">
+</script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(function(e) {
+      console.log('SW registration failed:', e);
+    });
+  }
+  </script>
+</body>
+</html>
+
+
+

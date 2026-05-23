@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ModelHub">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Crect width='192' height='192' rx='36' fill='%237c3aed'/%3E%3Ctext x='96' y='128' font-size='96' font-weight='800' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ModelHub Developer Docs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #05050a; color: #fff; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    a { color: #a78bfa; text-decoration: none; }
+
+    nav { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); position: fixed; top: 0; left: 0; right: 0; background: rgba(5,5,10,0.85); backdrop-filter: blur(16px); z-index: 100; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; color: #a78bfa; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: #a78bfa; }
+    .nav-cta { background: #7c3aed; color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; }
+
+    .spacer { height: 80px; }
+    .page-header { padding: 60px 0 40px; }
+    .page-header h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .page-header p { color: rgba(255,255,255,0.4); font-size: 17px; }
+
+    /* Quick Entry Cards */
+    .entry-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 60px; }
+    .entry-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 28px; text-align: center; transition: all 0.3s; cursor: pointer; }
+    .entry-card:hover { border-color: rgba(167,139,250,0.3); background: rgba(124,58,237,0.04); transform: translateY(-4px); }
+    .entry-card .ec-icon { font-size: 32px; margin-bottom: 12px; }
+    .entry-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+    .entry-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .entry-card a { display: block; text-decoration: none; color: inherit; }
+
+    /* Section anchors */
+    .section { margin-bottom: 48px; }
+    .section h2 { font-size: 24px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 10px; }
+
+    .step-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 28px; margin-bottom: 20px; position: relative; }
+    .step-card .step-num { position: absolute; top: -12px; left: 20px; background: #7c3aed; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+    .step-card h3 { font-size: 18px; font-weight: 700; margin: 8px 0 12px; color: #fff; }
+    .step-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 12px; }
+    .step-card .highlight { color: #a78bfa; font-weight: 600; }
+
+    .btn-main { display: inline-flex; align-items: center; gap: 8px; background: #7c3aed; color: #fff; padding: 12px 28px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .btn-main:hover { background: #6d28d9; transform: translateY(-2px); }
+
+    .code-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; font-family: 'SF Mono', 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.8; overflow-x: auto; margin: 12px 0; position: relative; }
+    .code-block .copy-btn { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; font-family: 'Inter', sans-serif; transition: 0.2s; }
+    .code-block .copy-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .code-block .comment { color: rgba(255,255,255,0.25); }
+    .code-block .keyword { color: #a78bfa; }
+    .code-block .string { color: #34d399; }
+    .code-block .func { color: #60a5fa; }
+
+    .inline-code { font-family: 'SF Mono', 'JetBrains Mono', monospace; font-size: 13px; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; color: #a78bfa; }
+
+    h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
+    h4 { font-size: 15px; font-weight: 600; margin: 20px 0 10px; color: rgba(255,255,255,0.7); }
+    p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    ul li { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 6px; }
+    ul li strong { color: rgba(255,255,255,0.85); }
+    code { font-family: 'SF Mono', 'JetBrains Mono', monospace; font-size: 13px; background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; color: #a78bfa; }
+
+    .endpoint { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 14px 20px; margin: 14px 0; display: flex; align-items: center; gap: 14px; }
+    .method { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; }
+    .method.post { background: rgba(52,211,153,0.12); color: #34d399; }
+    .method.get { background: rgba(96,165,250,0.12); color: #60a5fa; }
+    .endpoint .path { font-family: 'SF Mono', 'JetBrains Mono', monospace; font-size: 14px; color: #fff; }
+    .endpoint .desc-label { font-size: 13px; color: rgba(255,255,255,0.35); margin-left: auto; }
+
+    .error-table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    .error-table th, .error-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
+    .error-table th { color: rgba(255,255,255,0.35); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 11px; }
+    .error-table td { color: rgba(255,255,255,0.55); }
+    .error-table .code-col { color: #a78bfa; font-weight: 600; font-family: monospace; }
+
+    .plan-box { background: rgba(124,58,237,0.04); border: 1px solid rgba(167,139,250,0.15); border-radius: 12px; padding: 20px; margin: 14px 0; }
+    .plan-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .plan-item { text-align: center; padding: 16px; background: rgba(255,255,255,0.02); border-radius: 10px; }
+    .plan-item .pn { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+    .plan-item .pp { font-size: 24px; font-weight: 800; color: #a78bfa; }
+    .plan-item .ptk { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+    @media (max-width: 768px) {.container { padding: 0 16px; } .entry-cards { grid-template-columns: 1fr; } .plan-row { grid-template-columns: 1fr; } .page-header h1 { font-size: 26px; } .nav-links a:not(.nav-cta):not(.active) { display: none; } .nav-links a.nav-cta, .nav-links a.active { display: inline-flex; } .nav-links a.active { font-size: 12px; } .step-card { padding: 20px; } .code-block { font-size: 11px; padding: 12px 14px; } }
+
+    footer { padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; margin-top: 60px; font-size: 13px; color: rgba(255,255,255,0.25); }
+  <link rel="stylesheet" href="ai-assistant.css?v=3">
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo"><a href="/">ModelHub</a></div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="docs.html" class="active">Docs</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="dashboard.html" class="nav-cta">Dashboard</a>
+    </div>
+  </div>
+</nav>
+
+<div class="spacer"></div>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>ModelHub Developer Docs</h1>
+    <p>From beginner to pro in 5 minutes. Fully OpenAI-compatible —change one line and you're live.</p>
+  </div>
+
+  <!-- Quick Entry Cards -->
+  <div class="entry-cards">
+    <a href="#quickstart" class="entry-card">
+      <div class="ec-icon">&#128640;</div>
+      <h3>Quick Start</h3>
+      <p>For beginners: get Key →test →integrate, all in 5 minutes.</p>
+    </a>
+    <a href="#api-ref" class="entry-card">
+      <div class="ec-icon">&#128218;</div>
+      <h3>API Reference</h3>
+      <p>Complete API docs with request/response formats and error codes.</p>
+    </a>
+    <a href="#pricing" class="entry-card">
+      <div class="ec-icon">&#128176;</div>
+      <h3>Pricing & Plans</h3>
+      <p>Backpack $15/mo, Launch $65/mo. Pay-as-you-go also available.</p>
+    </a>
+  </div>
+
+  <!-- ===== QUICK START ===== -->
+  <div class="section" id="quickstart">
+    <h2><span>&#128640;</span> Quick Start</h2>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Get Your API Key</h3>
+      <p>Sign up on the <a href="dashboard.html">Dashboard</a> with your email to get a free API Key. New users receive <span class="highlight">$5 free credits</span> —no credit card required.</p>
+      <p>A key is generated automatically (format: <span class="inline-code">mh-sk-xxx...</span>). Copy and save it —for security, we only show it once.</p>
+      <a href="dashboard.html" class="btn-main">&#127881; Get Your API Key →/a>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Test Your Key</h3>
+      <p>Copy this command to your terminal (Mac: Terminal, Windows: CMD/PowerShell), replace <span class="inline-code">YOUR_API_KEY</span>  and run:</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyText(\"curl https://modelhub-api.com/v1/chat/completions -H \\\"Content-Type: application/json\\\" -H \\\"Authorization: Bearer YOUR_API_KEY\\\" -d '{\\\"model\\\": \\\"deepseek-v4-flash\\\", \\\"messages\\\": [{\\\"role\\\": \\\"user\\\", \\\"content\\\": \\\"Say hello\\\"}]}'\")">Copy</button>
+        curl https://modelhub-api.com/v1/chat/completions \<br>
+        &nbsp;&nbsp;-H "Content-Type: application/json" \<br>
+        &nbsp;&nbsp;-H "Authorization: Bearer YOUR_API_KEY" \<br>
+        &nbsp;&nbsp;-d '{"model": "deepseek-v4-flash", "messages": [{"role": "user", "content": "Say hello"}]}'
+      </div>
+      <p>If the response JSON contains a <span class="inline-code">"choices"</span> field —you're live! &#127881;</p>
+      <p>Or click "Send Test Request" on the Dashboard for one-click testing.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Integrate Into Your Project</h3>
+      <p>ModelHub is fully OpenAI-compatible. Just change two things:</p>
+
+      <h4>Python</h4>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyText('from openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"https://modelhub-api.com/v1\",\n    api_key=\"mh-sk-your-key\"\n)\n\nresponse = client.chat.completions.create(\n    model=\"deepseek-v4-flash\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello!\"}]\n)\n\nprint(response.choices[0].message.content)')">Copy</button>
+        <span class="comment"># pip install openai</span>
+        from openai import OpenAI
+
+        client = OpenAI(
+            base_url="<span class="string">https://modelhub-api.com/v1</span>",
+            api_key="<span class="string">mh-sk-your-key</span>"
+        )
+
+        response = client.chat.completions.create(
+            model="<span class="string">deepseek-v4-flash</span>",
+            messages=[{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Hello!"</span>}]
+        )
+
+        <span class="func">print</span>(response.choices[0].message.content)
+      </div>
+
+      <h4>JavaScript (Node.js)</h4>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyText('import OpenAI from \"openai\"\n\nconst client = new OpenAI({\n    baseURL: \"https://modelhub-api.com/v1\",\n    apiKey: \"mh-sk-your-key\"\n})\n\nconst response = await client.chat.completions.create({\n    model: \"deepseek-v4-flash\",\n    messages: [{ role: \"user\", content: \"Hello!\" }]\n})\n\nconsole.log(response.choices[0].message.content)')">Copy</button>
+        <span class="keyword">import</span> OpenAI <span class="keyword">from</span> <span class="string">"openai"</span>
+
+        <span class="keyword">const</span> client = <span class="keyword">new</span> OpenAI({
+            baseURL: <span class="string">"https://modelhub-api.com/v1"</span>,
+            apiKey: <span class="string">"mh-sk-your-key"</span>
+        })
+
+        <span class="keyword">const</span> response = <span class="keyword">await</span> client.chat.completions.<span class="func">create</span>({
+            model: <span class="string">"deepseek-v4-flash"</span>,
+            messages: [{ role: <span class="string">"user"</span>, content: <span class="string">"Hello!"</span> }]
+        })
+
+        <span class="func">console.log</span>(response.choices[0].message.content)
+      </div>
+
+      <h4>cURL</h4>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyText('curl https://modelhub-api.com/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer mh-sk-your-key\" \\\n  -d \'{\n    \"model\": \"deepseek-v4-flash\",\n    \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}]\n  }\'')">Copy</button>
+        curl https://modelhub-api.com/v1/chat/completions \<br>
+        &nbsp;&nbsp;-H <span class="string">"Content-Type: application/json"</span> \<br>
+        &nbsp;&nbsp;-H <span class="string">"Authorization: Bearer mh-sk-your-key"</span> \<br>
+        &nbsp;&nbsp;-d '{<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"model"</span>: <span class="string">"deepseek-v4-flash"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"messages"</span>: [{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Hello!"</span>}]<br>
+        &nbsp;&nbsp;}'
+      </div>
+      <p><span class="highlight">Pro tip:</span> If you're already using OpenAI, just change <span class="inline-code">base_url</span> change to <span class="inline-code">https://modelhub-api.com/v1</span>锛?span class="inline-code">api_key</span> to your ModelHub key. Everything else stays the same!</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3>Manage Your Keys</h3>
+      <p>On the <a href="dashboard.html">Dashboard</a> you can:</p>
+      <ul>
+        <li>View balance & usage stats</li>
+        <li>Create & revoke multiple named API keys</li>
+        <li>One-click copy for commands & snippets</li>
+        <li>Upgrade plan or add credits</li>
+      </ul>
+      <p>Use separate keys per project for better security.</p>
+      <a href="dashboard.html" class="btn-main">Go to Dashboard →/a>
+    </div>
+  </div>
+
+  <!-- ===== API REFERENCE ===== -->
+  <div class="section" id="api-ref">
+    <h2><span>&#128218;</span> API Reference</h2>
+
+    <h3>Base URL</h3>
+    <div class="code-block" style="font-size:14px; text-align:center;">
+      https://modelhub-api.com/v1
+    </div>
+
+    <h3>Authentication</h3>
+    <p>All API requests require an API Key in the HTTP header:</p>
+    <div class="code-block" style="font-size:13px;">
+      Authorization: Bearer mh-sk-your-key
+    </div>
+    <p>Get your API Key from the <a href="dashboard.html">Dashboard</a>. Keep it safe —anyone with your key can use the API.</p>
+
+    <h3>Available Models</h3>
+    <ul>
+      <li><strong>deepseek-v4-flash</strong> —Flagship model. Fast & efficient for general use. <span style="color:#34d399;">●Live</span></li>
+      <li><strong>deepseek-reasoner</strong> —Advanced reasoning. <span style="color:#fb923c;">Coming soon</span></li>
+    </ul>
+
+    <h3>Chat completions (Chat Completions)</h3>
+
+    <div class="endpoint">
+      <span class="method post">POST</span>
+      <span class="path">/v1/chat/completions</span>
+      <span class="desc-label">Chat completions</span>
+    </div>
+
+    <p>Fully compatible with OpenAI Chat Completions. Create model responses for chat conversations.</p>
+
+    <h4>Request Format</h4>
+    <div class="code-block">
+      {<br>
+      &nbsp;&nbsp;<span class="string">"model"</span>: <span class="string">"deepseek-v4-flash"</span>,<br>
+      &nbsp;&nbsp;<span class="string">"messages"</span>: [<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;{<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"You are a helpful assistant."</span>},<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Hello!"</span>}<br>
+      &nbsp;&nbsp;],<br>
+      &nbsp;&nbsp;<span class="string">"temperature"</span>: 0.7,<br>
+      &nbsp;&nbsp;<span class="string">"max_tokens"</span>: 1024,<br>
+      &nbsp;&nbsp;<span class="string">"stream"</span>: <span class="keyword">false</span><br>
+      }
+    </div>
+
+    <h4>Request Parameters</h4>
+    <ul>
+      <li><strong>model</strong> (required) —Model ID. Currently <code>deepseek-v4-flash</code></li>
+      <li><strong>messages</strong> (required) —Array of messages, each with <code>role</code> (system/user/assistant) and <code>content</code></li>
+      <li><strong>temperature</strong> (optional) —0 to 2, controls randomness. Default 1.0</li>
+      <li><strong>max_tokens</strong> (optional) —Max output tokens. Default 4096</li>
+      <li><strong>stream</strong> (optional) —Enable SSE streaming. Default false</li>
+    </ul>
+
+    <h4>Response Format</h4>
+    <div class="code-block">
+      {<br>
+      &nbsp;&nbsp;<span class="string">"id"</span>: <span class="string">"chatcmpl-..."</span>,<br>
+      &nbsp;&nbsp;<span class="string">"object"</span>: <span class="string">"chat.completion"</span>,<br>
+      &nbsp;&nbsp;<span class="string">"created"</span>: 1234567890,<br>
+      &nbsp;&nbsp;<span class="string">"model"</span>: <span class="string">"deepseek-v4-flash"</span>,<br>
+      &nbsp;&nbsp;<span class="string">"choices"</span>: [<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"index"</span>: 0,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"message"</span>: {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"role"</span>: <span class="string">"assistant"</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"content"</span>: <span class="string">"Hello! How can I help?"</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"finish_reason"</span>: <span class="string">"stop"</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+      &nbsp;&nbsp;],<br>
+      &nbsp;&nbsp;<span class="string">"usage"</span>: {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"prompt_tokens"</span>: 10,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"completion_tokens"</span>: 10,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"total_tokens"</span>: 20,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"cost_usd"</span>: 0.000005<br>
+      &nbsp;&nbsp;}<br>
+      }
+    </div>
+
+    <h3>List Models</h3>
+    <div class="endpoint">
+      <span class="method get">GET</span>
+      <span class="path">/v1/models</span>
+      <span class="desc-label">List available models</span>
+    </div>
+
+    <h3>Error Codes</h3>
+    <table class="error-table">
+      <tr><th>Status</th><th>Meaning</th><th>Action</th></tr>
+      <tr><td class="code-col">200</td><td>Success</td><td>Parse response normally</td></tr>
+      <tr><td class="code-col">400</td><td>Request ParametersError</td><td>Check required fields (model, messages)</td></tr>
+      <tr><td class="code-col">401</td><td>Invalid API key</td><td>Check Authorization header format and key value</td></tr>
+      <tr><td class="code-col">402</td><td>Insufficient balance</td><td>Add credits or upgrade plan</td></tr>
+      <tr><td class="code-col">403</td><td>Plan limit</td><td>Upgrade for higher quotas</td></tr>
+      <tr><td class="code-col">429</td><td>Rate limited</td><td>Reduce rate. Free: 10/min, Paid: 100/min</td></tr>
+      <tr><td class="code-col">500</td><td>Server error</td><td>Retry later or contact support</td></tr>
+    </table>
+  </div>
+
+  <!-- ===== PRICING ===== -->
+  <div class="section" id="pricing">
+    <h2><span>&#128176;</span> Pricing & Plans</h2>
+
+    <p>ModelHub uses credit-based billing. Subscriptions include monthly tokens with pay-as-you-go overage. Credits never expire.</p>
+
+    <div class="plan-row">
+      <div class="plan-item">
+        <div class="pn">Free Trial</div>
+        <div class="pp">$5</div>
+        <div class="ptk">One-time free credits<br>No credit card needed</div>
+      </div>
+      <div class="plan-item" style="border:1px solid rgba(167,139,250,0.3);background:rgba(124,58,237,0.06);">
+        <div class="pn" style="color:#a78bfa;">★Backpack</div>
+        <div class="pp" style="color:#a78bfa;">$15</div>
+        <div class="ptk">/mo 路 100M tokens included</div>
+      </div>
+      <div class="plan-item" style="border:1px solid rgba(167,139,250,0.3);background:rgba(124,58,237,0.06);">
+        <div class="pn" style="color:#a78bfa;">★Launch</div>
+        <div class="pp" style="color:#a78bfa;">$65</div>
+        <div class="ptk">/mo 路 500M tokens included</div>
+      </div>
+    </div>
+
+    <h4>Pay-as-you-go (per 1M tokens)</h4>
+    <ul>
+      <li><strong>deepseek-v4-flash</strong> Input锛?strong>$0.15</strong> / 1M tokens</li>
+      <li><strong>deepseek-v4-flash</strong> Output锛?strong>$0.30</strong> / 1M tokens</li>
+      <li>Cache hit锛?strong>$0.04</strong> / 1M tokens</li>
+    </ul>
+    <p>Compare to OpenAI GPT-4o Mini ($0.50/1M input) —save up to <strong>93%</strong>.</p>
+
+    <h4>Plan Details</h4>
+    <ul>
+      <li><strong>Backpack $15/鏈?/strong> —100M tokens + 1 涓?API Key + standard rate limits</li>
+      <li><strong>Launch $65/鏈?/strong> —500M tokens + 5 涓?API Key + priority routing + high rate limits</li>
+    </ul>
+    <p>Need more?<a href="mailto:support@modelhub-api.com">Contact our enterprise team</a> for dedicated deployment, 99.9% SLA, unlimited keys, and more.</p>
+    <p>PayPal, credit card & crypto accepted. Credits never expire. Upgrades take effect immediately.</p>
+    <a href="dashboard.html" class="btn-main">View Your Plan →/a>
+  </div>
+
+</div>
+
+<footer><div class="container">&copy; 2026 ModelHub.</div></footer>
+
+<script>
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    // Simple copy feedback
+    var t = document.createElement('div');
+    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#0d0d14;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 20px;font-size:14px;z-index:999;color:#34d399;';
+    t.textContent = 'Copied!';
+    document.body.appendChild(t);
+    setTimeout(function(){ t.remove(); }, 2000);
+  });
+}
+</script>
+
+<script src="ai-assistant.js?v=3"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(function(e) {
+      console.log('SW registration failed:', e);
+    });
+  }
+  </script>
+</body>
+</html>
+
+
+
