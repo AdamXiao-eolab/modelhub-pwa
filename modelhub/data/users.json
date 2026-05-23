@@ -1,0 +1,11 @@
+{
+  "admin": {
+    "email": "admin@modelhub-api.com",
+    "api_key": "mh-sk-test-key-please-change-in-production",
+    "balance": 50.0,
+    "total_spent": 0,
+    "total_requests": 0,
+    "created_at": 1779092138.0092685,
+    "status": "active"
+  }
+}

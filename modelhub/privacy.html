@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ModelHub">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Crect width='192' height='192' rx='36' fill='%237c3aed'/%3E%3Ctext x='96' y='128' font-size='96' font-weight='800' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy — ModelHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #05050a; color: #fff; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    a { color: #a78bfa; text-decoration: none; }
+
+    nav { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); position: fixed; top: 0; left: 0; right: 0; background: rgba(5,5,10,0.85); backdrop-filter: blur(16px); z-index: 100; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; color: #a78bfa; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: #a78bfa; }
+    .nav-cta { background: #7c3aed; color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; }
+
+    .spacer { height: 80px; }
+    .page-header { padding: 60px 0 40px; }
+    .page-header h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+    .page-header .updated { color: rgba(255,255,255,0.25); font-size: 13px; }
+
+    h2 { font-size: 22px; font-weight: 700; margin: 40px 0 16px; }
+    p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 16px; }
+    ul { padding-left: 24px; margin-bottom: 16px; }
+    ul li { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 8px; }
+    ul li strong { color: rgba(255,255,255,0.85); }
+
+    .box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      border-left: 3px solid #a78bfa;
+    }
+    .box p { margin-bottom: 0; color: rgba(255,255,255,0.7); }
+    .box strong { color: #fff; }
+
+    @media (max-width: 768px) {.container { padding: 0 16px; } .page-header h1 { font-size: 28px; } .nav-links a:not(.nav-cta):not(.active) { display: none; } .nav-links a.nav-cta, .nav-links a.active { display: inline-flex; } .nav-links a.active { font-size: 12px; } h2 { font-size: 18px; } p { font-size: 14px; } }
+
+    footer { padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; margin-top: 60px; }
+    footer p { font-size: 13px; color: rgba(255,255,255,0.25); }
+  <link rel="stylesheet" href="ai-assistant.css?v=3">
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="logo"><a href="/">ModelHub</a></div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="docs.html">Docs</a>
+      <a href="privacy.html" class="active">Privacy</a>
+      <a href="dashboard.html" class="nav-cta">Get Your API Key</a>
+    </div>
+  </div>
+</nav>
+
+<div class="spacer"></div>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: May 18, 2026</p>
+  </div>
+
+  <div class="box">
+    <p><strong>TL;DR:</strong> We don't store your prompts, we don't log your API requests, and we never use your data for training. Your data is proxied to the model provider and immediately discarded.</p>
+  </div>
+
+  <h2>1. What We Collect</h2>
+  <p>Only what's necessary to operate the service:</p>
+  <ul>
+    <li><strong>Account info</strong> — Email address and API key.</li>
+    <li><strong>Payment info</strong> — Handled entirely by Lemon Squeezy. We never see your card details.</li>
+    <li><strong>Usage metrics</strong> — Aggregated token counts for billing. No content.</li>
+  </ul>
+
+  <h2>2. What We Don't Collect</h2>
+  <ul>
+    <li>✓ We do <strong>not</strong> store your prompt content.</li>
+    <li>✓ We do <strong>not</strong> log your API request bodies.</li>
+    <li>✓ We do <strong>not</strong> use your data to train models.</li>
+    <li>✓ We do <strong>not</strong> sell or share your personal data.</li>
+  </ul>
+
+  <h2>3. Request Handling</h2>
+  <p>When you make an API request:</p>
+  <ul>
+    <li>Your request is authenticated and proxied to the model provider.</li>
+    <li>The response is returned to you.</li>
+    <li>Your content is <strong>not stored</strong> on our servers at any point.</li>
+    <li>Only the token count is recorded for billing.</li>
+  </ul>
+
+  <h2>4. Third Parties</h2>
+  <ul>
+    <li><strong>Lemon Squeezy</strong> — Payment processing (PCI compliant).</li>
+    <li><strong>DeepSeek</strong> — Model inference. DeepSeek's API does not use customer data for training.</li>
+    <li><strong>Cloudflare</strong> — CDN and DNS.</li>
+  </ul>
+
+  <h2>5. Your Rights</h2>
+  <ul>
+    <li>Access your personal data.</li>
+    <li>Delete your account and data.</li>
+    <li>Export usage history.</li>
+  </ul>
+  <p>Contact: <a href="mailto:privacy@modelhub-api.com">privacy@modelhub-api.com</a></p>
+
+  <h2>6. Security</h2>
+  <ul>
+    <li>TLS 1.3 encryption on all traffic.</li>
+    <li>API keys hashed at rest.</li>
+    <li>Regular security updates.</li>
+  </ul>
+
+  <h2>7. GDPR</h2>
+  <p>For EEA users: we process data under contract performance. Data stored in mainland China with Cloudflare CDN. You may lodge a complaint with your local authority.</p>
+</div>
+
+<footer>
+  <div class="container"><p>© 2026 ModelHub.</p></div>
+</footer>
+<script src="ai-assistant.js?v=3"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(function(e) {
+      console.log('SW registration failed:', e);
+    });
+  }
+  </script>
+</body>
+</html>
+
+
+
+

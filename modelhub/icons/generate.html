@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><body><script>
+const sizes = [192, 512];
+function makeIcon(size) {
+  const c = document.createElement('canvas');
+  c.width = size; c.height = size;
+  const ctx = c.getContext('2d');
+  const r = size * 0.1875;
+  const pad = size * 0.05;
+  // rounded rect bg
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.lineTo(size - r, 0);
+  ctx.quadraticCurveTo(size, 0, size, r);
+  ctx.lineTo(size, size - r);
+  ctx.quadraticCurveTo(size, size, size - r, size);
+  ctx.lineTo(r, size);
+  ctx.quadraticCurveTo(0, size, 0, size - r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0,0,size,size);
+  grad.addColorStop(0,'#7c3aed');
+  grad.addColorStop(1,'#a78bfa');
+  ctx.fillStyle = grad;
+  ctx.fill();
+  // M text
+  ctx.fillStyle = '#fff';
+  ctx.font = `bold ${size * 0.5}px Arial,sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('M', size/2, size * 0.55);
+  // green dot
+  ctx.beginPath();
+  ctx.arc(size * 0.8125, size * 0.1875, size * 0.05, 0, Math.PI*2);
+  ctx.fillStyle = '#34d399';
+  ctx.fill();
+  ctx.strokeStyle = '#05050a';
+  ctx.lineWidth = size * 0.012;
+  ctx.stroke();
+  // download
+  const a = document.createElement('a');
+  a.download = `icon-${size}.png`;
+  a.href = c.toDataURL('image/png');
+  a.click();
+}
+sizes.forEach(s => setTimeout(() => makeIcon(s), 500));
+</script></body></html>
