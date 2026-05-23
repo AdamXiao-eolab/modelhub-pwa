@@ -1,25 +1,25 @@
 /* AI Chat Assistant — global styles for all pages */
-/* Desktop: top-right corner, visible and accessible */
-/* Mobile: bottom-center floating bar, always in view */
+/* Desktop: floating right of hero / content area, always visible */
+/* Mobile: bottom-center floating bar */
 
-/* Floating button — desktop: bottom-right (classic position) */
+/* Floating button — desktop: hero-adjacent right side */
 .aicb {
   position: fixed;
-  bottom: 24px;
+  top: 120px;
   right: 24px;
   z-index: 999;
 }
 
 .aicb .aibt {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, #7c3aed, #a78bfa);
   border: none;
   color: #fff;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+  box-shadow: 0 4px 24px rgba(124,58,237,0.5);
   transition: all 0.2s;
   display: flex;
   align-items: center;
@@ -36,10 +36,10 @@
 .aicb .aibt::after {
   content: '';
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #34d399;
   border: 2px solid #05050a;
@@ -51,13 +51,13 @@
   50% { box-shadow: 0 0 0 6px rgba(52,211,153,0); }
 }
 
-/* Chat dialog — desktop: rises from bottom-right */
+/* Chat dialog — desktop: right side, below button */
 .aicd {
   position: fixed;
-  bottom: 76px;
+  top: 178px;
   right: 24px;
   width: 380px;
-  height: 520px;
+  height: 460px;
   background: rgba(13,13,20,0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
