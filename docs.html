@@ -94,7 +94,7 @@
     @media (max-width: 768px) {.container { padding: 0 16px; } .entry-cards { grid-template-columns: 1fr; } .plan-row { grid-template-columns: 1fr; } .page-header h1 { font-size: 26px; } .nav-links a:not(.nav-cta):not(.active) { display: none; } .nav-links a.nav-cta, .nav-links a.active { display: inline-flex; } .nav-links a.active { font-size: 12px; } .step-card { padding: 20px; } .code-block { font-size: 11px; padding: 12px 14px; } }
 
     footer { padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; margin-top: 60px; font-size: 13px; color: rgba(255,255,255,0.25); }
-  <link rel="stylesheet" href="ai-assistant.css?v=3">
+  <link rel="stylesheet" href="ai-assistant.css?v=5">
   </style>
 </head>
 <body>
@@ -118,7 +118,7 @@
 
   <div class="page-header">
     <h1>ModelHub Developer Docs</h1>
-    <p>From beginner to pro in 5 minutes. Fully OpenAI-compatible —change one line and you're live.</p>
+    <p>From beginner to pro in 5 minutes. Fully OpenAI-compatible 閳ユ攦hange one line and you're live.</p>
   </div>
 
   <!-- Quick Entry Cards -->
@@ -126,7 +126,7 @@
     <a href="#quickstart" class="entry-card">
       <div class="ec-icon">&#128640;</div>
       <h3>Quick Start</h3>
-      <p>For beginners: get Key →test →integrate, all in 5 minutes.</p>
+      <p>For beginners: get Key 閳姲est 閳姕ntegrate, all in 5 minutes.</p>
     </a>
     <a href="#api-ref" class="entry-card">
       <div class="ec-icon">&#128218;</div>
@@ -147,9 +147,9 @@
     <div class="step-card">
       <div class="step-num">1</div>
       <h3>Get Your API Key</h3>
-      <p>Sign up on the <a href="dashboard.html">Dashboard</a> with your email to get a free API Key. New users receive <span class="highlight">$5 free credits</span> —no credit card required.</p>
-      <p>A key is generated automatically (format: <span class="inline-code">mh-sk-xxx...</span>). Copy and save it —for security, we only show it once.</p>
-      <a href="dashboard.html" class="btn-main">&#127881; Get Your API Key →/a>
+      <p>Sign up on the <a href="dashboard.html">Dashboard</a> with your email to get a free API Key. New users receive <span class="highlight">$5 free credits</span> 閳ユ攺o credit card required.</p>
+      <p>A key is generated automatically (format: <span class="inline-code">mh-sk-xxx...</span>). Copy and save it 閳ユ攩or security, we only show it once.</p>
+      <a href="dashboard.html" class="btn-main">&#127881; Get Your API Key 閳?a>
     </div>
 
     <div class="step-card">
@@ -163,7 +163,7 @@
         &nbsp;&nbsp;-H "Authorization: Bearer YOUR_API_KEY" \<br>
         &nbsp;&nbsp;-d '{"model": "deepseek-v4-flash", "messages": [{"role": "user", "content": "Say hello"}]}'
       </div>
-      <p>If the response JSON contains a <span class="inline-code">"choices"</span> field —you're live! &#127881;</p>
+      <p>If the response JSON contains a <span class="inline-code">"choices"</span> field 閳ユ敎ou're live! &#127881;</p>
       <p>Or click "Send Test Request" on the Dashboard for one-click testing.</p>
     </div>
 
@@ -220,7 +220,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"messages"</span>: [{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Hello!"</span>}]<br>
         &nbsp;&nbsp;}'
       </div>
-      <p><span class="highlight">Pro tip:</span> If you're already using OpenAI, just change <span class="inline-code">base_url</span> change to <span class="inline-code">https://modelhub-api.com/v1</span>锛?span class="inline-code">api_key</span> to your ModelHub key. Everything else stays the same!</p>
+      <p><span class="highlight">Pro tip:</span> If you're already using OpenAI, just change <span class="inline-code">base_url</span> change to <span class="inline-code">https://modelhub-api.com/v1</span>闁?span class="inline-code">api_key</span> to your ModelHub key. Everything else stays the same!</p>
     </div>
 
     <div class="step-card">
@@ -234,7 +234,7 @@
         <li>Upgrade plan or add credits</li>
       </ul>
       <p>Use separate keys per project for better security.</p>
-      <a href="dashboard.html" class="btn-main">Go to Dashboard →/a>
+      <a href="dashboard.html" class="btn-main">Go to Dashboard 閳?a>
     </div>
   </div>
 
@@ -252,12 +252,12 @@
     <div class="code-block" style="font-size:13px;">
       Authorization: Bearer mh-sk-your-key
     </div>
-    <p>Get your API Key from the <a href="dashboard.html">Dashboard</a>. Keep it safe —anyone with your key can use the API.</p>
+    <p>Get your API Key from the <a href="dashboard.html">Dashboard</a>. Keep it safe 閳ユ攣nyone with your key can use the API.</p>
 
     <h3>Available Models</h3>
     <ul>
-      <li><strong>deepseek-v4-flash</strong> —Flagship model. Fast & efficient for general use. <span style="color:#34d399;">●Live</span></li>
-      <li><strong>deepseek-reasoner</strong> —Advanced reasoning. <span style="color:#fb923c;">Coming soon</span></li>
+      <li><strong>deepseek-v4-flash</strong> 閳ユ摚lagship model. Fast & efficient for general use. <span style="color:#34d399;">閳煎粯ive</span></li>
+      <li><strong>deepseek-reasoner</strong> 閳ユ摐dvanced reasoning. <span style="color:#fb923c;">Coming soon</span></li>
     </ul>
 
     <h3>Chat completions (Chat Completions)</h3>
@@ -286,11 +286,11 @@
 
     <h4>Request Parameters</h4>
     <ul>
-      <li><strong>model</strong> (required) —Model ID. Currently <code>deepseek-v4-flash</code></li>
-      <li><strong>messages</strong> (required) —Array of messages, each with <code>role</code> (system/user/assistant) and <code>content</code></li>
-      <li><strong>temperature</strong> (optional) —0 to 2, controls randomness. Default 1.0</li>
-      <li><strong>max_tokens</strong> (optional) —Max output tokens. Default 4096</li>
-      <li><strong>stream</strong> (optional) —Enable SSE streaming. Default false</li>
+      <li><strong>model</strong> (required) 閳ユ摤odel ID. Currently <code>deepseek-v4-flash</code></li>
+      <li><strong>messages</strong> (required) 閳ユ摐rray of messages, each with <code>role</code> (system/user/assistant) and <code>content</code></li>
+      <li><strong>temperature</strong> (optional) 閳? to 2, controls randomness. Default 1.0</li>
+      <li><strong>max_tokens</strong> (optional) 閳ユ摤ax output tokens. Default 4096</li>
+      <li><strong>stream</strong> (optional) 閳ユ摗nable SSE streaming. Default false</li>
     </ul>
 
     <h4>Response Format</h4>
@@ -352,33 +352,33 @@
         <div class="ptk">One-time free credits<br>No credit card needed</div>
       </div>
       <div class="plan-item" style="border:1px solid rgba(167,139,250,0.3);background:rgba(124,58,237,0.06);">
-        <div class="pn" style="color:#a78bfa;">★Backpack</div>
+        <div class="pn" style="color:#a78bfa;">閳藉寭ackpack</div>
         <div class="pp" style="color:#a78bfa;">$15</div>
-        <div class="ptk">/mo 路 100M tokens included</div>
+        <div class="ptk">/mo 鐠?100M tokens included</div>
       </div>
       <div class="plan-item" style="border:1px solid rgba(167,139,250,0.3);background:rgba(124,58,237,0.06);">
-        <div class="pn" style="color:#a78bfa;">★Launch</div>
+        <div class="pn" style="color:#a78bfa;">閳藉導aunch</div>
         <div class="pp" style="color:#a78bfa;">$65</div>
-        <div class="ptk">/mo 路 500M tokens included</div>
+        <div class="ptk">/mo 鐠?500M tokens included</div>
       </div>
     </div>
 
     <h4>Pay-as-you-go (per 1M tokens)</h4>
     <ul>
-      <li><strong>deepseek-v4-flash</strong> Input锛?strong>$0.15</strong> / 1M tokens</li>
-      <li><strong>deepseek-v4-flash</strong> Output锛?strong>$0.30</strong> / 1M tokens</li>
-      <li>Cache hit锛?strong>$0.04</strong> / 1M tokens</li>
+      <li><strong>deepseek-v4-flash</strong> Input闁?strong>$0.15</strong> / 1M tokens</li>
+      <li><strong>deepseek-v4-flash</strong> Output闁?strong>$0.30</strong> / 1M tokens</li>
+      <li>Cache hit闁?strong>$0.04</strong> / 1M tokens</li>
     </ul>
-    <p>Compare to OpenAI GPT-4o Mini ($0.50/1M input) —save up to <strong>93%</strong>.</p>
+    <p>Compare to OpenAI GPT-4o Mini ($0.50/1M input) 閳ユ敃ave up to <strong>93%</strong>.</p>
 
     <h4>Plan Details</h4>
     <ul>
-      <li><strong>Backpack $15/鏈?/strong> —100M tokens + 1 涓?API Key + standard rate limits</li>
-      <li><strong>Launch $65/鏈?/strong> —500M tokens + 5 涓?API Key + priority routing + high rate limits</li>
+      <li><strong>Backpack $15/闁?/strong> 閳?00M tokens + 1 濞?API Key + standard rate limits</li>
+      <li><strong>Launch $65/闁?/strong> 閳?00M tokens + 5 濞?API Key + priority routing + high rate limits</li>
     </ul>
     <p>Need more?<a href="mailto:support@modelhub-api.com">Contact our enterprise team</a> for dedicated deployment, 99.9% SLA, unlimited keys, and more.</p>
     <p>PayPal, credit card & crypto accepted. Credits never expire. Upgrades take effect immediately.</p>
-    <a href="dashboard.html" class="btn-main">View Your Plan →/a>
+    <a href="dashboard.html" class="btn-main">View Your Plan 閳?a>
   </div>
 
 </div>
@@ -398,7 +398,7 @@ function copyText(text) {
 }
 </script>
 
-<script src="ai-assistant.js?v=3"></script>
+<script src="ai-assistant.js?v=5"></script>
   <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(function(e) {
